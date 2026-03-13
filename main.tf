@@ -1,5 +1,6 @@
 resource "aws_instance" "terraform_instance" {
     ami = var.ami_id
+    #instance_type = var.environment == "dev" ? "t3.micro" : "t3.small"
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.terraform_sg.id]
     tags = var.tags
@@ -7,8 +8,8 @@ resource "aws_instance" "terraform_instance" {
 }
 
 resource "aws_security_group" "terraform_sg" {
-  name        = "allow_tls"
-  description = "Allow all traffic"
+  name        = var.sg_name
+  description = var.sg_description
  
 
   egress {

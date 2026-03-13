@@ -4,6 +4,12 @@ variable "ami_id" {
   
 }
 
+variable "environment" {
+    default = "test"
+    type = string
+  
+}
+
 variable "instance_type" {
     type = string
     default = "t3.micro"
@@ -23,7 +29,7 @@ variable "tags" {
 variable "sg_name" {
 
     type = string
-    default = "allow-all-terraform"
+    default = "allow-all-terraform-default"
   
 }
 
